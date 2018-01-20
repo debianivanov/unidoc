@@ -1,0 +1,130 @@
+# =========================================================================== #
+#                                                                             #
+# Author(s): Ivan Ivanov                                                      #
+# Title: Linux boot process                                                   #
+# Subtitle: (none)                                                            #
+# Release date: 2016-06-14                                                    #
+#                                                                             #
+
+#
+#    Copyright (C) 2016 Ivan Ivanov.
+#    Permission is granted to copy, distribute and/or modify this document
+#    under the terms of the GNU Free Documentation License, Version 1.3
+#    or any later version published by the Free Software Foundation;
+#    with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+#    A copy of the license is included in the section entitled "GNU
+#    Free Documentation License".
+#
+
+#                                                                             #
+# =========================================================================== #
+
+    #
+    # BIOS ....................................................................
+    #
+
+    The basic input/output system (BIOS) is the first software that runs when
+the computer is powered on. It is a type of firmware used to perform hardware
+initialization and test. It is used for configuring various aspects of certain
+hardware components as well, e.g., enabling or disabling integrated
+peripherals.
+    The BIOS program itself is stored on electrically erasable and programmable
+read-only memory (EEPROM) or on flash memory.
+    In EEPROM the term read-only memory means that the chip's data is stored in
+non-volatile memory, i.e., the BIOS contents stay in memory when the computer
+is powered off or even when there is a power outage. The ROM being EEP means
+that the BIOS can be re-written, i.e., updated. For such operations in the past
+an user had to remove the BIOS chip from the motherboard and put a new one in
+(if it was just in ROM). If it was PROM or EPROM, the user had to get the BIOS
+chip to the manufacturer and let them re-program it, then re-attach it to the
+motherboard. Thanks to EEPROM, an user does not have to remove the BIOS chip to
+update the firmware, because these operations are handled electrically.
+    In modern motherboards the BIOS contents are stored on flash memory. Flash
+memory is an electronic non-volatile computer storage medium that can be
+electrically erased and re-programmed. It is developed from EEPROM, but unlike
+EEPROM, which have to be completely erased before being re-written, flash
+memory can be written in blocks (pages) for NAND type flash memory or in
+bytes (machine words) for NOR type flash memory.
+    The BIOS has a setup utility, which can be invoked by pressing either ESC,
+F2, F10, or any other key (depending on the manufacturer, but these three keys
+are the most common used) from where all hardware configuration is done.
+    Hardware configuration includes:
+        • system date and time, i.e., hardware clock
+        • CPU, e.g., cache, frequency, hyper-threading, virtualization
+          technology, voltage, etc.
+        • memory, e.g., frequency, timings, voltage, etc.
+        • storage, e.g., floppy, IDE, SATA, etc.
+        • integrated peripherals, e.g., audio adapter, ethernet adapter, video
+          adapter, parallel ports, serial ports, USB controllers, etc.
+        • power management, e.g., restore on AC power loss
+        • monitoring, e.g., CPU temperature
+        • security, e.g., set BIOS password
+        • boot device priority
+    The BIOS settings are stored in complementary metal-oxide-semiconductor
+(CMOS) chip. A battery is used to keep the settings not reset when the computer
+is powered off, because CMOS is a volatile memory. If you remove the battery
+and re-attach it later, all BIOS options will be set to their defaults. Another
+and preferred way of clearing CMOS in order to restore BIOS settings is to use
+the CLR_CMOS jumper on the motherboard, if it is available. This is extremely
+useful, when you have done some overclocking and the computer does not boot or
+you have forgotten the BIOS password. For any other cases use the setup utility
+to load the default values for all BIOS options.
+    It is worth mentioning that the BIOS settings do not have to be stored in
+volatile CMOS memory. There are plenty of embedded systems, e.g., devices like
+routers, that store their settings in non-volatile random-access memory
+(NVRAM). In fact, the best-known form of NVRAM memory today is flash memory.
+The only reason personal computers (PCs) have gotten away with using volatile
+CMOS memory all these years is that they already had a battery to keep the
+internal real-time clock ticking while the power is off. This meant that
+cheaper volatile CMOS memory could be used to store system settings. So it is
+mostly for historical purposes.
+
+# =========================================================================== #
+
+    #
+    # POST ....................................................................
+    #
+
+    A power-on self-test (POST) is a process performed by firmware immediately
+after a computer is powered on. It is a built-in diagnostic program that checks
+the vital hardware components of a system to ensure that everything is present
+and functioning properly before the BIOS begins the actual boot. The results of
+the tests may be displayed on the screen. If the display is non-functional or
+not initialized yet, an indicator lamp on the motherboard or a speaker may be
+provided to show error codes as a sequence of flashes or beeps. The exact flash
+or beep patterns depend on the manufacturer of the firmware.
+    A typical POST operation usually has two stages. The first stage performs
+memory checks. The second stage performs device controller checks and prepares
+mass storage devices for the boot process. The device controller checks include
+testing and initializing parallel and serial ports, PATA and SATA controllers,
+audio and video controllers, network controllers, PCI devices, etc.
+
+# =========================================================================== #
+
+    #
+    # References ..............................................................
+    #
+
+        #
+        # BIOS ................................................................
+        #
+
+    • https://en.wikipedia.org/wiki/BIOS
+    • https://en.wikipedia.org/wiki/EEPROM
+    • https://en.wikipedia.org/wiki/Flash_memory
+    • https://en.wikipedia.org/wiki/Non-volatile_random-access_memory
+    • http://www.howtogeek.com/180798/where-is-the-bios-stored
+    • http://www.tomshardware.com/reviews/bios-a-z,1200.html
+    • http://www.tomshardware.com/reviews/bios-beginners,1126.html
+
+        #
+        # POST ................................................................
+        #
+
+    • https://docs.oracle.com/cd/E19464-01/820-6850-11/POST.html
+    • https://en.wikipedia.org/wiki/Power-on_self-test
+    • http://www.computerhope.com/beep.htm
+    • http://www.pcguide.com/ref/mbsys/bios/bootPOST-c.html
+
+# =========================================================================== #
+
